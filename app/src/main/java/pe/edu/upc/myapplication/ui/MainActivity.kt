@@ -1,4 +1,4 @@
-package pe.edu.upc.myapplication
+package pe.edu.upc.myapplication.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
