@@ -39,9 +39,10 @@ class LoginFragment : Fragment() {
             )
             //message = viewModel.getmessage()
             //validateTransition(message)
-            /*val action = LoginFragmentDirections.
+            val action = LoginFragmentDirections.navigateToRegisterFragment()
+
             NavHostFragment.findNavController(this)
-                .navigate(action)*/
+                .navigate(action)
         }
         return binding.root
     }
