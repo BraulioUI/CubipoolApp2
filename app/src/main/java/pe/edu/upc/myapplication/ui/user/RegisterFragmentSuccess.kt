@@ -1,32 +1,29 @@
 package pe.edu.upc.myapplication.ui.user
-
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.NavHostFragment
-import pe.edu.upc.myapplication.databinding.FragmentRegisterBinding
+import pe.edu.upc.myapplication.databinding.FragmentRegisterSuccessBinding
 
 
-class RegisterFragment : Fragment() {
+class RegisterFragmentSuccess : Fragment() {
 
-    private var _binding:FragmentRegisterBinding? = null
+    private var _binding:FragmentRegisterSuccessBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentRegisterBinding.inflate(layoutInflater)
-
-        _binding = binding
-        binding.registerButton.setOnClickListener{
-
-            val action = RegisterFragmentDirections.navigateToRegisterSucessFragment()
-
+        val binding = FragmentRegisterSuccessBinding.inflate(layoutInflater)
+        binding.loginButton.setOnClickListener{
+            val action = RegisterFragmentSuccessDirections.navigateToLoginFragment()
             NavHostFragment.findNavController(this)
                 .navigate(action)
         }
+        _binding = binding
+
         return binding.root
     }
 

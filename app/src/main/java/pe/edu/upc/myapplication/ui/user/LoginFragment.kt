@@ -30,8 +30,14 @@ class LoginFragment : Fragment() {
         _binding = binding
 
         val factory = AuthViewModelFactory()
-        viewModel = ViewModelProvider(this,factory).get(AuthViewModel::class.java)
+        viewModel = ViewModelProvider(this, factory).get(AuthViewModel::class.java)
 
+        binding.btRegister.setOnClickListener {
+            val action = LoginFragmentDirections.navigateToRegisterFragment()
+
+            NavHostFragment.findNavController(this)
+                .navigate(action)
+        }
         binding.btLogin.setOnClickListener {
             viewModel.onClick(
                 binding.etCode.text.toString(),
@@ -39,11 +45,12 @@ class LoginFragment : Fragment() {
             )
             //message = viewModel.getmessage()
             //validateTransition(message)
-            val action = LoginFragmentDirections.navigateToRegisterFragment()
+            val action = LoginFragmentDirections.navigateToHomeActivity()
 
             NavHostFragment.findNavController(this)
                 .navigate(action)
         }
+
         return binding.root
     }
 
