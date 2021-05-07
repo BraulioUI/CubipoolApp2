@@ -2,11 +2,15 @@ package pe.edu.upc.myapplication.ui.user
 
 import android.os.Bundle
 import android.renderscript.ScriptGroup
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.graphics.convertTo
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
@@ -20,45 +24,48 @@ class LoginFragment : Fragment() {
 
     private var _binding:FragmentLoginBinding? =null
     private lateinit var viewModel: AuthViewModel
-    private lateinit var message: String
+    private var message: String = "no funciona"
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val binding = FragmentLoginBinding.inflate(layoutInflater)
-
 
         _binding = binding
 
         val factory = AuthViewModelFactory()
         viewModel = ViewModelProvider(this,factory).get(AuthViewModel::class.java)
 
+        viewModel.isCorrect.observe(viewLifecycleOwner,{correct ->
+           Log.i("HEY: ",correct.toString())
+
+            val action = LoginFragmentDirections.navigateToRegisterFragment()
+            NavHostFragment.findNavController(this)
+                .navigate(action)
+        })
+
+        viewModel.message.observe(viewLifecycleOwner,{msg ->
+            Log.i("HEY2: ",msg.toString())
+            this.message = msg
+            validateTransition(message)
+            Log.i("FRAGMENTLOGIN: ",message)
+        })
+
         binding.btLogin.setOnClickListener {
-            viewModel.onClick(
+            Log.i("ETCODE",binding.etCode.text.toString())
+            viewModel.auth(
                 binding.etCode.text.toString(),
                 binding.etPassword.text.toString()
             )
-            //message = viewModel.getmessage()
-            //validateTransition(message)
-            val action = LoginFragmentDirections.navigateToRegisterFragment()
 
-            NavHostFragment.findNavController(this)
-                .navigate(action)
         }
+
+
+
         return binding.root
     }
 
     private fun validateTransition(message:String) {
-        when(message){
-            "Ingreso correctamente" ->{
-                Toast.makeText(this.context,message,Toast.LENGTH_LONG).show()
-            }
-            "Credenciales inválidas" ->{
-                Toast.makeText(this.context,message,Toast.LENGTH_LONG).show()
-            }
-            "Algo salio mal"->{
-                Toast.makeText(this.context,message,Toast.LENGTH_LONG).show()
-            }
-        }
+        Toast.makeText(this.context,message,Toast.LENGTH_LONG).show()
     }
 
 
