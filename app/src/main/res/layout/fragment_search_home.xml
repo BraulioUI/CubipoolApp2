@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.user.SearchHomeFragment" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/lensButton"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/ic_reserve_cubiculo"
+            tools:ignore="VectorDrawableCompat" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Reservar Cubiculo"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccent"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="256dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins"
+            android:text="Realiza tu búsqueda y no te quedes sin tu cubículo"
+            android:textAlignment="center"
+            android:textColor="#000000" />
+
+        <Button
+            android:id="@+id/searchButton"
+            android:layout_width="240dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/button_rounded"
+            android:fontFamily="@font/poppins_semibold"
+            android:shadowColor="#ffffff"
+            android:text="Buscar"
+            android:textAllCaps="false"
+            android:textColor="#ffffff"
+            app:backgroundTint="#F40202" />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/lensButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="193dp"
+        android:layout_marginEnd="194dp"
+        android:layout_marginBottom="24dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_search"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/homeButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/lensButton"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/bellButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="148dp"
+        android:layout_marginBottom="24dp"
+        android:src="@android:drawable/ic_popup_reminder"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lensButton" />
+</androidx.constraintlayout.widget.ConstraintLayout>
