@@ -7,5 +7,5 @@ import retrofit2.http.POST
 interface UserApiService {
 
     @POST("users")
-    fun postUser(@Body userRequest:UserRequest): Call<UserRequest>
+    fun postUser(@Body userRequest:UserRequest): Call<UserResponse>
 }

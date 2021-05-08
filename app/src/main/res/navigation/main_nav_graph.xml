@@ -13,7 +13,7 @@
             android:id="@+id/navigateToRegisterFragment"
             app:destination="@id/registerFragment" />
         <action
-            android:id="@+id/navigateToHomeActivity"
+            android:id="@+id/navigateTohome"
             app:destination="@id/homeActivity" />
     </fragment>
     <fragment

@@ -45,7 +45,7 @@ class LoginFragment : Fragment() {
         viewModel.isCorrect.observe(viewLifecycleOwner,{correct ->
            Log.i("HEY: ",correct.toString())
 
-            val action = LoginFragmentDirections.navigateToHomeActivity()
+            val action = LoginFragmentDirections.navigateTohome()
             NavHostFragment.findNavController(this)
                 .navigate(action)
         })

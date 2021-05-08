@@ -23,7 +23,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="60dp"
-                app:srcCompat="@drawable/ic_arrow" />
+                app:srcCompat="@drawable/ic_arrow"
+                tools:ignore="VectorDrawableCompat" />
 
             <TextView
                 android:id="@+id/textView11"
