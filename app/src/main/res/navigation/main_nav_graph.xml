@@ -37,4 +37,14 @@
         android:id="@+id/homeActivity"
         android:name="pe.edu.upc.myapplication.ui.HomeActivity"
         android:label="HomeActivity" />
+    <fragment
+        android:id="@+id/searchhomeFragment"
+        android:name="pe.edu.upc.myapplication.SearchHome"
+        android:label="fragment_search_home"
+        tools:layout="@layout/fragment_search_home" />
+    <fragment
+        android:id="@+id/myReservationFragment"
+        android:name="pe.edu.upc.myapplication.MyReservationFragment"
+        android:label="fragment_my_reservation"
+        tools:layout="@layout/fragment_my_reservation" />
 </navigation>
