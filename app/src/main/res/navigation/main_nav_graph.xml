@@ -28,7 +28,8 @@
     <fragment
         android:id="@+id/registerFragmentSucess"
         android:name="pe.edu.upc.myapplication.ui.user.RegisterFragmentSuccess"
-        android:label="RegisterFragmentSucess" >
+        android:label="RegisterFragmentSucess"
+        tools:layout="@layout/fragment_register_success">
         <action
             android:id="@+id/navigateToLoginFragment"
             app:destination="@id/loginFragment" />
@@ -36,15 +37,6 @@
     <activity
         android:id="@+id/homeActivity"
         android:name="pe.edu.upc.myapplication.ui.HomeActivity"
-        android:label="HomeActivity" />
-    <fragment
-        android:id="@+id/searchhomeFragment"
-        android:name="pe.edu.upc.myapplication.SearchHome"
-        android:label="fragment_search_home"
-        tools:layout="@layout/fragment_search_home" />
-    <fragment
-        android:id="@+id/myReservationFragment"
-        android:name="pe.edu.upc.myapplication.MyReservationFragment"
-        android:label="fragment_my_reservation"
-        tools:layout="@layout/fragment_my_reservation" />
+        android:label="HomeActivity"
+        tools:layout="@layout/activity_home"/>
 </navigation>

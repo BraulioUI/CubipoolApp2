@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.NavHostFragment
 import pe.edu.upc.myapplication.databinding.FragmentSearchHomeBinding
 
 class SearchHomeFragment : Fragment() {
@@ -17,11 +16,7 @@ class SearchHomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentSearchHomeBinding.inflate(layoutInflater)
-        binding.searchButton.setOnClickListener{
-            val action = RegisterFragmentSuccessDirections.navigateToLoginFragment()
-            NavHostFragment.findNavController(this)
-                .navigate(action)
-        }
+
         _binding = binding
 
         return binding.root

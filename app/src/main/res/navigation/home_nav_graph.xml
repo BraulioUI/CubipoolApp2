@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_nav_graph"
+    app:startDestination="@id/myReservationFragment2">
+
+    <fragment
+        android:id="@+id/myReservationFragment2"
+        android:name="pe.edu.upc.myapplication.ui.user.MyReservationFragment"
+        android:label="fragment_my_reservation"
+        tools:layout="@layout/fragment_my_reservation" />
+    <fragment
+        android:id="@+id/searchHomeFragment2"
+        android:name="pe.edu.upc.myapplication.ui.user.SearchHomeFragment"
+        android:label="fragment_search_home"
+        tools:layout="@layout/fragment_search_home" />
+    <fragment
+        android:id="@+id/registerFragmentSuccess2"
+        android:name="pe.edu.upc.myapplication.ui.user.RegisterFragmentSuccess"
+        android:label="fragment_register_success"
+        tools:layout="@layout/fragment_register_success" />
+</navigation>

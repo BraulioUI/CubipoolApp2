@@ -35,6 +35,10 @@ class AuthViewModel: ViewModel() {
                        404 -> {
                            message.value = "Credenciales Inválidas"
                        }
+
+                       400 -> {
+                           message.value = "Datos incompletos"
+                       }
                    }
                }
            }
