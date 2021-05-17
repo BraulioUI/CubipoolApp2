@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
 import pe.edu.upc.myapplication.databinding.FragmentSearchHomeBinding
 
 class SearchHomeFragment : Fragment() {
@@ -19,7 +20,10 @@ class SearchHomeFragment : Fragment() {
     ): View? {
         _binding = FragmentSearchHomeBinding.inflate(inflater,container,false)
 
-
+        binding.searchButton.setOnClickListener {
+            val action = SearchHomeFragmentDirections.actionSearchHomeFragment2ToSearchActivity()
+            NavHostFragment.findNavController(this).navigate(action)
+        }
 
         return binding.root
     }
