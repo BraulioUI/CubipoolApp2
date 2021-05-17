@@ -11,18 +11,21 @@ import pe.edu.upc.myapplication.databinding.FragmentRegisterSuccessBinding
 class RegisterFragmentSuccess : Fragment() {
 
     private var _binding:FragmentRegisterSuccessBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentRegisterSuccessBinding.inflate(layoutInflater)
+
+        _binding = FragmentRegisterSuccessBinding.inflate(inflater,container,false)
+
         binding.loginButton.setOnClickListener{
             val action = RegisterFragmentSuccessDirections.navigateToLoginFragment()
             NavHostFragment.findNavController(this)
                 .navigate(action)
         }
-        _binding = binding
+
 
         return binding.root
     }

@@ -1,39 +1,27 @@
 package pe.edu.upc.myapplication.ui.user
 
 import android.os.Bundle
-import android.renderscript.ScriptGroup
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.graphics.convertTo
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
-import pe.edu.upc.myapplication.R
-import pe.edu.upc.myapplication.databinding.ActivityMainBinding
 import pe.edu.upc.myapplication.databinding.FragmentLoginBinding
-import pe.edu.upc.myapplication.viewmodel.auth.AuthViewModel
-import pe.edu.upc.myapplication.viewmodel.auth.AuthViewModelFactory
+import pe.edu.upc.myapplication.viewmodel.AuthViewModel
 
 class LoginFragment : Fragment() {
 
     private var _binding:FragmentLoginBinding? =null
-    private lateinit var viewModel: AuthViewModel
+    private val binding get() = _binding!!
+    private val viewModel: AuthViewModel by viewModels()
     private var message: String = "no funciona"
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        val binding = FragmentLoginBinding.inflate(layoutInflater)
-
-        _binding = binding
-
-        val factory = AuthViewModelFactory()
-        viewModel = ViewModelProvider(this, factory).get(AuthViewModel::class.java)
+        _binding = FragmentLoginBinding.inflate(inflater,container,false)
 
         binding.btRegister.setOnClickListener {
             val action = LoginFragmentDirections.navigateToRegisterFragment()
@@ -64,8 +52,6 @@ class LoginFragment : Fragment() {
                 binding.etCode.text.toString(),
                 binding.etPassword.text.toString()
             )
-
-
 
         }
 

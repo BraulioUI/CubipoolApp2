@@ -1,4 +1,4 @@
-package pe.edu.upc.myapplication.viewmodel.auth
+package pe.edu.upc.myapplication.viewmodel
 
 import android.util.Log
 import android.view.View
@@ -49,7 +49,6 @@ class AuthViewModel: ViewModel() {
                message.value = "Algo salio mal"
 
            }
-
 
 
        })

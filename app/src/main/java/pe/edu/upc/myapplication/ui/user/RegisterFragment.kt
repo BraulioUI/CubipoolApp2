@@ -6,27 +6,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment
-import androidx.lifecycle.ViewModelProvider
 import pe.edu.upc.myapplication.databinding.FragmentRegisterBinding
-import pe.edu.upc.myapplication.viewmodel.user.UserViewModel
-import pe.edu.upc.myapplication.viewmodel.user.UserViewModelFactory
+import pe.edu.upc.myapplication.viewmodel.UserViewModel
 
 class RegisterFragment : Fragment() {
 
     private var _binding:FragmentRegisterBinding? = null
-    private lateinit var viewModel: UserViewModel
+    private val binding get() = _binding!!
+    private val viewModel: UserViewModel by viewModels()
     private var message: String = "no funciona"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentRegisterBinding.inflate(layoutInflater)
 
-        _binding = binding
-        val factory = UserViewModelFactory()
-        viewModel = ViewModelProvider(this, factory).get(UserViewModel::class.java)
+
+        _binding = FragmentRegisterBinding.inflate(inflater,container,false)
+
         viewModel.isCorrect.observe(viewLifecycleOwner,{correct->
             Log.i("A: ",correct.toString())
             val register = RegisterFragmentDirections.navigateToRegisterSucessFragment()
@@ -43,7 +42,7 @@ class RegisterFragment : Fragment() {
 
         binding.registerButton.setOnClickListener {
             Log.i("ETCODE",binding.codeField.text.toString())
-            viewModel.regis(
+            viewModel.register(
                 binding.codeField.text.toString(),
                 binding.nameField.text.toString(),
                 binding.lastnameField.text.toString(),

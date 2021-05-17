@@ -1,4 +1,4 @@
-package pe.edu.upc.myapplication.viewmodel.user
+package pe.edu.upc.myapplication.viewmodel
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -19,7 +19,7 @@ class UserViewModel : ViewModel(){
 
     var isCorrect = MutableLiveData<Boolean>()
 
-    fun regis(code:String,name:String,lastName:String,password:String){
+    fun register(code:String,name:String,lastName:String,password:String){
         val register = UserRequest(code,name,lastName,password)
         val userResponse = UserApiClient.build()?.postUser(register)
         userResponse?.enqueue(object: Callback<UserResponse> {
@@ -33,7 +33,7 @@ class UserViewModel : ViewModel(){
                             message.value = "Datos invalidos"
                         }
                         409 -> {
-                            message.value = "usuarío ya registrado"
+                            message.value = "usuario ya registrado"
                         }
                     }
                 }
