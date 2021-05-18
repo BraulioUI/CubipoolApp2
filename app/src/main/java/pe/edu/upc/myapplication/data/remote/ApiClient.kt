@@ -1,21 +1,21 @@
-package pe.edu.upc.myapplication.data.remote.user
+package pe.edu.upc.myapplication.data.remote
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object UserApiClient{
-    private const val API_BASE_URL = "https://cubiv1.herokuapp.com/"
-    private var userApiService:UserApiService? = null
+object ApiClient {
 
-    fun build(): UserApiService?{
+    private const val API_BASE_URL = "https://cubiv1.herokuapp.com/"
+    private var apiService: ApiService? = null
+
+    fun build(): ApiService? {
         val retrofit = Retrofit.Builder()
             .baseUrl(API_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        userApiService = retrofit.create(UserApiService::class.java)
+        apiService = retrofit.create(ApiService::class.java)
 
-        return userApiService as UserApiService
+        return apiService as ApiService
     }
-
 }
