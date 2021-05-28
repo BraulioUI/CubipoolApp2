@@ -1,12 +1,8 @@
 package pe.edu.upc.myapplication.viewmodel
 
-import android.util.Log
-import android.view.View
-import android.widget.Toast
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import pe.edu.upc.myapplication.data.remote.auth.AuthApiClient
+import pe.edu.upc.myapplication.data.remote.ApiClient
 import pe.edu.upc.myapplication.data.remote.auth.AuthRequest
 import pe.edu.upc.myapplication.data.remote.auth.AuthResponse
 import retrofit2.Call
@@ -21,7 +17,7 @@ class AuthViewModel: ViewModel() {
 
     fun auth(code:String,password:String){
         val login = AuthRequest(code,password)
-       val authResponse = AuthApiClient.build()?.authenticate(login)
+       val authResponse = ApiClient.build()?.authenticate(login)
 
        authResponse?.enqueue(object: Callback<AuthResponse> {
            override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
