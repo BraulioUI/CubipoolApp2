@@ -10,7 +10,9 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.NavHostFragment
 import pe.edu.upc.myapplication.R
+import pe.edu.upc.myapplication.data.entities.CubicleF
 import pe.edu.upc.myapplication.databinding.FragmentSearchCubicleBinding
 import pe.edu.upc.myapplication.util.ReservationUtilities
 import pe.edu.upc.myapplication.viewmodel.SearchViewModel
@@ -96,6 +98,13 @@ class SearchCubicleFragment : Fragment() {
         binding.searchCubicleBtn.setOnClickListener {
             viewModel.searchCubiclesAvailable(binding.etSecondCode.text.toString())
         }
+
+        viewModel.status.observe(viewLifecycleOwner,{correct->
+            Log.i("IsCorrectSearchCubicle: ",correct.toString())
+            val cubicleF = CubicleF("u202120211",hourSelected,qHoursSelected,daySelected,binding.etSecondCode.text.toString())
+            val action = SearchCubicleFragmentDirections.actionSearchCubicleFragmentToCubicleAvailablesFragment(cubicleF)
+            NavHostFragment.findNavController(this).navigate(action)
+        })
 
         return binding.root
     }

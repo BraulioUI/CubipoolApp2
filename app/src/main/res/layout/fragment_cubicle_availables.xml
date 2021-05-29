@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cubicle_list_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ui.search.CubicleAvailablesFragment">
 
     <TextView
         android:id="@+id/textView26"
@@ -33,7 +34,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.38"
         tools:layout_editor_absoluteX="0dp"
-        tools:listitem="@layout/fragment_cubicle_item"
+        tools:listitem="@layout/prototype_cubicle_item"
         tools:ignore="MissingConstraints" />
 
     <Button

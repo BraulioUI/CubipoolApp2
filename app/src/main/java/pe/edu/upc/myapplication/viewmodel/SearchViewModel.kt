@@ -163,7 +163,7 @@ class SearchViewModel : ViewModel() {
                 when (response.code()){
                     404 -> {
                         Log.i("gg", "gg")
-                        status.value = false
+
                         message.value = "El usuario no se encuentra registrado"
                     }
                     200 -> findAvailableHoursForSecondUser(secondUserCode)

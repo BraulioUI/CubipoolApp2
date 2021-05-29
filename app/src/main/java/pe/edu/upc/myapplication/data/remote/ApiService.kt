@@ -1,5 +1,6 @@
 package pe.edu.upc.myapplication.data.remote
 
+import pe.edu.upc.myapplication.data.entities.Cubicle
 import pe.edu.upc.myapplication.data.remote.auth.AuthRequest
 import pe.edu.upc.myapplication.data.remote.auth.AuthResponse
 import pe.edu.upc.myapplication.data.remote.user.UserHoursAvailables
@@ -23,4 +24,10 @@ interface ApiService {
 
     @GET("users/{id}")
     fun findById(@Path("id")id:String):Call<UserResponse>
+
+    @GET("cubicles")
+    fun findAllAvailableCubicles(@Query("date") date:String,
+                                 @Query("startTime") startTime:String,
+                                 @Query("hours") hours:String)
+    : Call<ArrayList<Cubicle>>
 }
