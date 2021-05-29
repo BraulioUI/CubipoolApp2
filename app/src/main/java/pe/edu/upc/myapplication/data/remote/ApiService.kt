@@ -3,6 +3,7 @@ package pe.edu.upc.myapplication.data.remote
 import pe.edu.upc.myapplication.data.entities.Cubicle
 import pe.edu.upc.myapplication.data.remote.auth.AuthRequest
 import pe.edu.upc.myapplication.data.remote.auth.AuthResponse
+import pe.edu.upc.myapplication.data.remote.reservation.ReservationRequest
 import pe.edu.upc.myapplication.data.remote.user.UserHoursAvailables
 import pe.edu.upc.myapplication.data.remote.user.UserRequest
 import pe.edu.upc.myapplication.data.remote.user.UserResponse
@@ -30,4 +31,7 @@ interface ApiService {
                                  @Query("startTime") startTime:String,
                                  @Query("hours") hours:String)
     : Call<ArrayList<Cubicle>>
+
+    @POST("reservation")
+    fun submitReservation(@Body reservationRequest: ReservationRequest): Call<ReservationRequest>
 }

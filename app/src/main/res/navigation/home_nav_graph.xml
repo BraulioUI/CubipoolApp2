@@ -19,14 +19,14 @@
             android:id="@+id/action_searchHomeFragment2_to_searchActivity"
             app:destination="@id/searchActivity" />
     </fragment>
-    <fragment
-        android:id="@+id/registerFragmentSuccess2"
-        android:name="pe.edu.upc.myapplication.ui.user.RegisterFragmentSuccess"
-        android:label="fragment_register_success"
-        tools:layout="@layout/fragment_register_success" />
     <activity
         android:id="@+id/searchActivity"
         android:name="pe.edu.upc.myapplication.ui.SearchActivity"
         android:label="activity_search"
         tools:layout="@layout/activity_search" />
+    <fragment
+        android:id="@+id/joinGroupFragment2"
+        android:name="pe.edu.upc.myapplication.ui.join.JoinGroupFragment"
+        android:label="fragment_join_group"
+        tools:layout="@layout/fragment_join_group" />
 </navigation>

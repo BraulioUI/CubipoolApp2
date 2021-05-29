@@ -12,7 +12,7 @@
         android:title="@string/tv_cubipool"/>
 
     <item
-        android:id="@+id/registerFragmentSuccess2"
+        android:id="@+id/joinGroupFragment2"
         android:icon="@drawable/ic_notification"
         android:title="@string/tv_cubipool"/>
 </menu>

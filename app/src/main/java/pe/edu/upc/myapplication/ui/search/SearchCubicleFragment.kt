@@ -36,6 +36,9 @@ class SearchCubicleFragment : Fragment() {
     var quantityHoursAvailables: MutableList<String> = ArrayList()
     var qHoursSelected = ""
 
+    //cambiar usando sharedPreference
+    var code = "u202120211"
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -46,7 +49,7 @@ class SearchCubicleFragment : Fragment() {
 
 
         ////////// SET DAYS ////////
-        viewModel.findHoursAvailableToday("u202120211")
+        viewModel.findHoursAvailableToday(code)
         viewModel.daysAvailables.observe(viewLifecycleOwner, { days ->
             dayAvailable = days
             dayAvailableAdapter =
@@ -96,12 +99,15 @@ class SearchCubicleFragment : Fragment() {
         })
 
         binding.searchCubicleBtn.setOnClickListener {
-            viewModel.searchCubiclesAvailable(binding.etSecondCode.text.toString())
+            if(code == binding.etSecondCode.text.toString())
+                validateTransition("Ingrese un codigo distinto al suyo")
+            else
+                viewModel.searchCubiclesAvailable(binding.etSecondCode.text.toString())
         }
 
         viewModel.status.observe(viewLifecycleOwner,{correct->
             Log.i("IsCorrectSearchCubicle: ",correct.toString())
-            val cubicleF = CubicleF("u202120211",hourSelected,qHoursSelected,daySelected,binding.etSecondCode.text.toString())
+            val cubicleF = CubicleF(code,hourSelected,qHoursSelected,daySelected,binding.etSecondCode.text.toString())
             val action = SearchCubicleFragmentDirections.actionSearchCubicleFragmentToCubicleAvailablesFragment(cubicleF)
             NavHostFragment.findNavController(this).navigate(action)
         })

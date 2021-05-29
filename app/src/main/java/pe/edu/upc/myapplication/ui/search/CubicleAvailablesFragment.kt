@@ -5,8 +5,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import pe.edu.upc.myapplication.R
@@ -24,7 +26,6 @@ class CubicleAvailablesFragment : Fragment(),CubiclesAdapter.CubicleItemListener
     private var date:String = ""
     private var secondCode = ""
     private var firstCode =""
-    private var hora_fin = ""
 
     private lateinit var adapter: CubiclesAdapter
     private val viewModel: CubicleViewModel by viewModels()
@@ -58,6 +59,12 @@ class CubicleAvailablesFragment : Fragment(),CubiclesAdapter.CubicleItemListener
         if (viewModel.lastCubicle.value != null) {
             lastCubicle = viewModel.lastCubicle.value!!
         }
+
+        binding.btnSubmitReservation.setOnClickListener {
+            viewModel.startDateSubmit()
+            viewModel.reservationSubmit(firstCode,secondCode,lastCubicle.id)
+        }
+
 
         setupObservers()
 
@@ -112,21 +119,6 @@ class CubicleAvailablesFragment : Fragment(),CubiclesAdapter.CubicleItemListener
         isCubicleSelected = true
         viewModel.isCubicleSelected.value = isCubicleSelected
 
-
-        /*if (viewModel.firstTimeSelected.value == true){
-            viewModel.lastCubicle.value = cubicle
-            viewModel.firstTimeSelected.value = false
-        }
-
-        if(viewModel.isCubicleSelected.value == true ) {
-
-            if(viewModel.lastCubicle.value?.id != cubicle.id) {
-                viewModel.lastCubicle.value?.status = false
-                viewModel.lastCubicle.value = cubicle
-            }
-        }
-        viewModel.isCubicleSelected.value = true*/
-
     }
 
     private fun setupObservers(){
@@ -141,6 +133,19 @@ class CubicleAvailablesFragment : Fragment(),CubiclesAdapter.CubicleItemListener
                 Log.i("CUBICLES: ", "NO HAY DATOS")
             }
         })
+
+        viewModel.isCorrect.observe(viewLifecycleOwner,{correct ->
+            val action = CubicleAvailablesFragmentDirections.actionCubicleAvailablesFragmentToReservationSuccessFragment()
+            NavHostFragment.findNavController(this).navigate(action)
+        })
+
+        viewModel.message.observe(viewLifecycleOwner,{msg ->
+            validateTransition(msg)
+        })
+    }
+
+    private fun validateTransition(message:String) {
+        Toast.makeText(this.context,message, Toast.LENGTH_LONG).show()
     }
 
 

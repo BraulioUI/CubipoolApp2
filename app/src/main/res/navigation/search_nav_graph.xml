@@ -22,5 +22,22 @@
         <argument
             android:name="cublicleF"
             app:argType="pe.edu.upc.myapplication.data.entities.CubicleF" />
+        <action
+            android:id="@+id/action_cubicleAvailablesFragment_to_reservationSuccessFragment"
+            app:destination="@id/reservationSuccessFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/reservationSuccessFragment"
+        android:name="pe.edu.upc.myapplication.ui.search.ReservationSuccessFragment"
+        android:label="fragment_reservation_sucess"
+        tools:layout="@layout/fragment_reservation_sucess" >
+        <action
+            android:id="@+id/action_reservationSuccessFragment_to_homeActivity2"
+            app:destination="@id/homeActivity2" />
+    </fragment>
+    <activity
+        android:id="@+id/homeActivity2"
+        android:name="pe.edu.upc.myapplication.ui.HomeActivity"
+        android:label="HomeActivity"
+        tools:layout="@layout/activity_home"/>
 </navigation>
