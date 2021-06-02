@@ -4,6 +4,7 @@ import pe.edu.upc.myapplication.data.entities.Cubicle
 import pe.edu.upc.myapplication.data.remote.auth.AuthRequest
 import pe.edu.upc.myapplication.data.remote.auth.AuthResponse
 import pe.edu.upc.myapplication.data.remote.reservation.ReservationRequest
+import pe.edu.upc.myapplication.data.remote.reservation.UserReservationsAvailables
 import pe.edu.upc.myapplication.data.remote.user.UserHoursAvailables
 import pe.edu.upc.myapplication.data.remote.user.UserRequest
 import pe.edu.upc.myapplication.data.remote.user.UserResponse
@@ -34,4 +35,11 @@ interface ApiService {
 
     @POST("reservation")
     fun submitReservation(@Body reservationRequest: ReservationRequest): Call<ReservationRequest>
+
+
+
+    @GET("users/{id}/reservations?availables=true")
+    fun getReservationsAvailables(@Path("id") id:String)
+            :Call<ArrayList<UserReservationsAvailables>>
+
 }

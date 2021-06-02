@@ -71,4 +71,6 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
 
+    //Animation
+    implementation 'com.airbnb.android:lottie:3.7.0'
 }
