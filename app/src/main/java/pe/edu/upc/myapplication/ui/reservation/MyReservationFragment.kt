@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import pe.edu.upc.myapplication.data.remote.reservation.UserReservationsAvailables
 import pe.edu.upc.myapplication.databinding.FragmentMyReservationBinding
 import pe.edu.upc.myapplication.viewmodel.ReservationViewModel
 
@@ -55,9 +58,18 @@ class MyReservationFragment: Fragment(){
         if(qReservation > 0){
             binding.btnViewReservations.visibility = View.VISIBLE
             binding.etNumeroReservas.text = "Actualmente tienes reservas"
+
+            binding.btnViewReservations.setOnClickListener {
+                navigateToReservationAvailables()
+            }
         }
 
 
+    }
+
+    private fun navigateToReservationAvailables(){
+        val action = MyReservationFragmentDirections.actionMyReservationFragment2ToMyReservationNavGraph()
+        NavHostFragment.findNavController(this).navigate(action)
     }
 
 }

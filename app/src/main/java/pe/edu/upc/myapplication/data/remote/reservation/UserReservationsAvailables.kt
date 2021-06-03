@@ -1,5 +1,9 @@
 package pe.edu.upc.myapplication.data.remote.reservation
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+
 class UserReservationsAvailables (
 
     var id: Int,

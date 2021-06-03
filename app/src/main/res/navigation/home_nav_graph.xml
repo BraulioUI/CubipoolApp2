@@ -9,7 +9,12 @@
         android:id="@+id/myReservationFragment2"
         android:name="pe.edu.upc.myapplication.ui.reservation.MyReservationFragment"
         android:label="fragment_my_reservation"
-        tools:layout="@layout/fragment_my_reservation" />
+        tools:layout="@layout/fragment_my_reservation" >
+        <action
+            android:id="@+id/action_myReservationFragment2_to_my_reservation_nav_graph"
+            app:destination="@id/myReservationActivity">
+        </action>
+    </fragment>
     <fragment
         android:id="@+id/searchHomeFragment2"
         android:name="pe.edu.upc.myapplication.ui.search.SearchHomeFragment"
@@ -29,4 +34,9 @@
         android:name="pe.edu.upc.myapplication.ui.join.JoinGroupFragment"
         android:label="fragment_join_group"
         tools:layout="@layout/fragment_join_group" />
+    <activity
+        android:id="@+id/myReservationActivity"
+        android:name="pe.edu.upc.myapplication.ui.MyReservationActivity"
+        android:label="activity_my_reservation"
+        tools:layout="@layout/activity_my_reservation" />
 </navigation>

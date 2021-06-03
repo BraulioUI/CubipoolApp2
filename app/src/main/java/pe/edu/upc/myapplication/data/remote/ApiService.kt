@@ -1,8 +1,10 @@
 package pe.edu.upc.myapplication.data.remote
 
 import pe.edu.upc.myapplication.data.entities.Cubicle
+import pe.edu.upc.myapplication.data.entities.ReservationDetail
 import pe.edu.upc.myapplication.data.remote.auth.AuthRequest
 import pe.edu.upc.myapplication.data.remote.auth.AuthResponse
+import pe.edu.upc.myapplication.data.remote.reservation.ActivateReservation
 import pe.edu.upc.myapplication.data.remote.reservation.ReservationRequest
 import pe.edu.upc.myapplication.data.remote.reservation.UserReservationsAvailables
 import pe.edu.upc.myapplication.data.remote.user.UserHoursAvailables
@@ -41,5 +43,11 @@ interface ApiService {
     @GET("users/{id}/reservations?availables=true")
     fun getReservationsAvailables(@Path("id") id:String)
             :Call<ArrayList<UserReservationsAvailables>>
+
+    @GET("reservation/{id}/{code}")
+    fun findReservationById(@Path("id") id: Int, @Path("code") code: String): Call<ReservationDetail>
+
+    @PUT("reservation/activate")
+    fun activateCubicle(@Body activateReservation: ActivateReservation): Call<ActivateReservation>
 
 }
