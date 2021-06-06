@@ -20,7 +20,7 @@ class MyReservationFragment: Fragment(){
     private val binding get() = _binding!!
     private val viewModel:ReservationViewModel by viewModels()
 
-    private var codigo = "u202120211"
+
     private var qReservation = 0
 
 
@@ -31,6 +31,10 @@ class MyReservationFragment: Fragment(){
     ): View? {
 
         _binding = FragmentMyReservationBinding.inflate(inflater,container,false)
+
+        val sharedPreferences = activity?.getSharedPreferences("db_local",0)
+
+        viewModel.code.value = sharedPreferences?.getString("code","u202120211")
 
         viewModel.getQuantityReservationsAvailable()
         setupObservers()

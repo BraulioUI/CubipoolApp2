@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import pe.edu.upc.myapplication.data.entities.ParticipantsReservation
 import pe.edu.upc.myapplication.databinding.PrototypeParticipantReservationBinding
 
@@ -52,7 +54,11 @@ class ParticipantReservationAdapter(
                         1
                     )
                 }.jpg"
-            ).into(binding.imgParticipant)
+            )
+                .error(binding.imgParticipant.drawable)
+                .fallback(binding.imgParticipant.drawable)
+                .transform(CenterCrop(), RoundedCorners(25))
+                .into(binding.imgParticipant)
         }
 
     }

@@ -60,6 +60,11 @@ class ReservationDetailFragment : Fragment(){
         val id = args.idCubicle
         reservationId = id
         viewModel.idReservation.value = reservationId
+
+        val sharedPreferences = activity?.getSharedPreferences("db_local",0)
+        viewModel.code.value = sharedPreferences?.getString("code","u202120211")
+
+
         getReservation()
     }
 

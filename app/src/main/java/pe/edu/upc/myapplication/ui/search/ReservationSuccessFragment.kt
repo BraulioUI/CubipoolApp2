@@ -32,17 +32,21 @@ class ReservationSuccessFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+
+        _binding = FragmentReservationSucessBinding.inflate(inflater,container,false)
+
         ////////////////
         createNotification()
-        val notification = NotificationCompat.Builder(this,channelID).also {
-            it.setSmallIcon(R.drawable.ic_notification)
+        val notification = NotificationCompat.Builder(binding.root.context,channelID).also {
+            it.setSmallIcon(R.drawable.ic_logo)
             it.setContentTitle("Reserva Exitosa")
             it.setContentText("Se ha elaborado su reserva correctamente")
             it.setPriority(NotificationCompat.PRIORITY_DEFAULT)
         }.build()
-        val notificationManager = NotificationManagerCompat.from(this)
+        val notificationManager = NotificationManagerCompat.from(binding.root.context)
         //////////////
-        _binding = FragmentReservationSucessBinding.inflate(inflater,container,false)
+
+
         binding.btnGotToHome.setOnClickListener {
             val action = ReservationSuccessFragmentDirections.actionReservationSuccessFragmentToHomeActivity2()
             NavHostFragment.findNavController(this).navigate(action)
@@ -58,8 +62,8 @@ class ReservationSuccessFragment: Fragment() {
             val channel = NotificationChannel(channelID,channelName,importance).apply {
                 enableLights(true)
             }
-            val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-
+            //val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            val manager = activity?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             manager.createNotificationChannel(channel)
         }
 

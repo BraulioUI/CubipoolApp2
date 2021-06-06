@@ -13,11 +13,12 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="horizontal">
+
         <ImageView
             android:id="@+id/img_participant"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            app:srcCompat="@drawable/profile_image" />
+            app:srcCompat="@drawable/ic_logo" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,7 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="Jair Huaman Bellido"
+                android:text="Braulio Uribe"
                 android:textColor="#000000"
                 android:textSize="16dp" />
 
@@ -41,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins"
-                android:text="u201413797"
+                android:text="u205020504"
                 android:textSize="14dp" />
         </LinearLayout>
     </LinearLayout>

@@ -40,6 +40,10 @@ class ReservationAvailablesFragment: Fragment(),MyCubiclesAdapter.CubicleItemLis
     }
 
     private fun setupView() {
+
+        val sharedPreferences = activity?.getSharedPreferences("db_local",0)
+        viewModel.code.value = sharedPreferences?.getString("code","u202120211")
+
         viewModel.getQuantityReservationsAvailable()
 
     }

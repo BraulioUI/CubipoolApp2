@@ -36,8 +36,9 @@ class SearchCubicleFragment : Fragment() {
     var quantityHoursAvailables: MutableList<String> = ArrayList()
     var qHoursSelected = ""
 
-    //cambiar usando sharedPreference
-    var code = "u202120211"
+
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,6 +48,8 @@ class SearchCubicleFragment : Fragment() {
 
         _binding = FragmentSearchCubicleBinding.inflate(inflater, container, false)
 
+        val sharedPreferences = activity?.getSharedPreferences("db_local",0)
+        val code = sharedPreferences?.getString("code","u202120211")!!
 
         ////////// SET DAYS ////////
         viewModel.findHoursAvailableToday(code)

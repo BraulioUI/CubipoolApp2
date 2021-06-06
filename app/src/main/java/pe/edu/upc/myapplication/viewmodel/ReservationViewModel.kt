@@ -17,7 +17,8 @@ class ReservationViewModel : ViewModel() {
 
     var qReservation = MutableLiveData<Int>()
 
-    private val code = "u202120211"
+    //val code = "u202120211"
+    val code = MutableLiveData<String>()
 
     var myCubiclesAvailables = MutableLiveData<List<UserReservationsAvailables>>()
 
@@ -28,7 +29,7 @@ class ReservationViewModel : ViewModel() {
 
     fun getQuantityReservationsAvailable(){
 
-        val getQReservation = ApiClient.build()?.getReservationsAvailables(code)
+        val getQReservation = ApiClient.build()?.getReservationsAvailables(code.value!!)
 
         getQReservation?.enqueue(object : Callback<ArrayList<UserReservationsAvailables>>{
             override fun onResponse(
@@ -53,7 +54,7 @@ class ReservationViewModel : ViewModel() {
     }
 
     fun getReservation(){
-        val reservation = ApiClient.build()?.findReservationById(idReservation.value!!,code)
+        val reservation = ApiClient.build()?.findReservationById(idReservation.value!!,code.value!!)
 
         reservation?.enqueue(object : Callback<ReservationDetail>{
             override fun onResponse(
@@ -76,7 +77,7 @@ class ReservationViewModel : ViewModel() {
     }
 
     fun activateReservation(){
-        val activate = ApiClient.build()?.activateCubicle(ActivateReservation(code,idReservation.value!!))
+        val activate = ApiClient.build()?.activateCubicle(ActivateReservation(code.value!!,idReservation.value!!))
 
         activate?.enqueue(object: Callback<ActivateReservation>{
             override fun onResponse(
