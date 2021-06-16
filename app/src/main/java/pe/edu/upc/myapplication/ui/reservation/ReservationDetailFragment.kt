@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import pe.edu.upc.myapplication.data.entities.Offer
@@ -23,6 +24,7 @@ class ReservationDetailFragment : Fragment(){
     private var reservationId = 0
     private val code = "u202120211"
 
+    private var offerId = 0
 
     private lateinit var adapter: ParticipantReservationAdapter
 
@@ -103,6 +105,7 @@ class ReservationDetailFragment : Fragment(){
         viewModel.isActivatedReservation.observe(viewLifecycleOwner,{ isActivated ->
             if(isActivated == true){
                 binding.llPorActivar.visibility = View.GONE
+                getReservation()
             }
         })
 
@@ -110,6 +113,8 @@ class ReservationDetailFragment : Fragment(){
 
     private fun showOffer(offer:Offer) {
         binding.llOffer.visibility = View.VISIBLE
+
+        this.offerId = offer.id
 
         if(offer.apple){
             binding.llOfferAppleTV.visibility = View.VISIBLE
@@ -123,17 +128,29 @@ class ReservationDetailFragment : Fragment(){
     private fun onClickButtons(){
         binding.btnActivateReservation.setOnClickListener {
             viewModel.activateReservation()
-            /*if (viewModel.isActivatedReservation.value == true){
-                binding.llPorActivar.visibility = View.GONE
-            }*/
+
         }
 
         binding.btnSharedCubicleActivity.setOnClickListener {
+
+            val idReservation = viewModel.idReservation.value
+
+            val action = ReservationDetailFragmentDirections
+                .actionReservationDetailFragmentToShareCubicleFragment(null,idReservation?.toString())
+
+            NavHostFragment.findNavController(this).navigate(action)
 
         }
 
         binding.btnEditOffer.setOnClickListener {
 
+            val idReservation = viewModel.idReservation.value
+            val idOffer = offerId
+
+            val action = ReservationDetailFragmentDirections
+                .actionReservationDetailFragmentToShareCubicleFragment(idOffer.toString(),idReservation?.toString())
+
+            NavHostFragment.findNavController(this).navigate(action)
         }
 
     }

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
 import pe.edu.upc.myapplication.databinding.FragmentJoinGroupBinding
 
 class JoinGroupFragment: Fragment() {
@@ -19,6 +20,13 @@ class JoinGroupFragment: Fragment() {
     ): View? {
 
         _binding = FragmentJoinGroupBinding.inflate(inflater,container,false)
+
+
+        binding.btnJoin.setOnClickListener {
+            val action = JoinGroupFragmentDirections.actionJoinGroupFragment2ToJoinActivity()
+
+            NavHostFragment.findNavController(this).navigate(action)
+        }
 
         return binding.root
     }

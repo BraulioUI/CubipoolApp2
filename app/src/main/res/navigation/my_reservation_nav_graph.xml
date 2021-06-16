@@ -21,5 +21,25 @@
         <argument
             android:name="idCubicle"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_reservationDetailFragment_to_shareCubicleFragment"
+            app:destination="@id/shareCubicleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/shareCubicleFragment"
+        android:name="pe.edu.upc.myapplication.ui.reservation.ShareCubicleFragment"
+        android:label="fragment_share_cubicle"
+        tools:layout="@layout/fragment_share_cubicle" >
+        <argument
+            android:name="offerId"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="reservationId"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_shareCubicleFragment_to_reservationDetailFragment"
+            app:destination="@id/reservationDetailFragment" />
     </fragment>
 </navigation>

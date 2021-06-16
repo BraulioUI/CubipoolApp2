@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/join_nav_graph"
+    app:startDestination="@id/joinCubiclesFragment">
+
+    <fragment
+        android:id="@+id/joinCubiclesFragment"
+        android:name="pe.edu.upc.myapplication.ui.join.JoinCubiclesFragment"
+        android:label="fragment_join_cubicles"
+        tools:layout="@layout/fragment_join_cubicles" >
+        <action
+            android:id="@+id/action_joinCubiclesFragment_to_offerDetailFragment"
+            app:destination="@id/offerDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/offerDetailFragment"
+        android:name="pe.edu.upc.myapplication.ui.join.OfferDetailFragment"
+        android:label="fragment_offer_detail"
+        tools:layout="@layout/fragment_offer_detail" >
+        <argument
+            android:name="id"
+            app:argType="string" />
+        <argument
+            android:name="appleTV"
+            app:argType="boolean" />
+        <argument
+            android:name="board"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_offerDetailFragment_to_homeActivity3"
+            app:destination="@id/homeActivity3" />
+    </fragment>
+    <activity
+        android:id="@+id/homeActivity3"
+        android:name="pe.edu.upc.myapplication.ui.HomeActivity"
+        android:label="HomeActivity"
+        tools:layout="@layout/activity_home"/>
+</navigation>

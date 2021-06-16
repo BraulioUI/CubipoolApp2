@@ -33,10 +33,19 @@
         android:id="@+id/joinGroupFragment2"
         android:name="pe.edu.upc.myapplication.ui.join.JoinGroupFragment"
         android:label="fragment_join_group"
-        tools:layout="@layout/fragment_join_group" />
+        tools:layout="@layout/fragment_join_group" >
+        <action
+            android:id="@+id/action_joinGroupFragment2_to_joinActivity"
+            app:destination="@id/joinActivity" />
+    </fragment>
     <activity
         android:id="@+id/myReservationActivity"
         android:name="pe.edu.upc.myapplication.ui.MyReservationActivity"
         android:label="activity_my_reservation"
         tools:layout="@layout/activity_my_reservation" />
+    <activity
+        android:id="@+id/joinActivity"
+        android:name="pe.edu.upc.myapplication.ui.JoinActivity"
+        android:label="activity_join"
+        tools:layout="@layout/activity_join" />
 </navigation>
